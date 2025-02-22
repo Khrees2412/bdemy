@@ -1,12 +1,12 @@
 use crate::{msg::*, state::*};
-use cosmwasm_std::{to_json_binary, Binary, Deps, StdResult, Storage};
+use cosmwasm_std::{to_json_binary, Binary, Deps, StdResult};
 
 pub fn query_attendance(
     deps: Deps,
     course_name: String,
     student_address: String,
 ) -> StdResult<Student> {
-    let student = STUDENTS.load(deps.storage, (course_name, &student_address))?;
+    let student = STUDENTS.load(deps.storage, (course_name, student_address))?;
     Ok(student)
 }
 
